@@ -37,14 +37,12 @@
                                     <h4 class="mt-0 text-xl font-medium leading-tight text-primary">Данные клиента</h4>
                                     <h5 id="block" class="mt-0 text text-red-400 font-medium leading-tight text-primary" style="display: none;">Клиент находится в чёрном списке</h5>
                                     <h5 id="unknown" class="mt-0 text text-red-400 font-medium leading-tight text-primary" style="display: none;">Неопознанный трек код</h5>
-                                    <h5 id="post" class="mt-0 text text-green-400 font-medium leading-tight text-primary" style="display: none;">Клиент получает по почте</h5>
 
                                     <p><b>Имя:</b> <span id="surnamename"></span> &nbsp; <span id="name"></span></p>
                                     <p><b>Номер телефона:</b> <span id="login"></span></p>
                                     <p><b>Город:</b> <span id="city"></span></p>
 
                                     <p><b>Трек код:</b> <span id="trackcode"></span></p>
-                                    <p><b>Код:</b> <span id="code"></span></p>
 
                                     <h4 class="mt-4">Дата регистрации в Китае</h4>
                                     <p><small id="to_china"></small></p>
@@ -91,19 +89,12 @@
                                      $("#surname").text(data[1].surname);
                                      $("#name").text(data[1].name);
                                      $("#login").text(data[1].login);
-                                     $("#code").text(data[1].code);
                                      $("#city").text(data[1].city);
                                      $("#to_china").text(data[0].to_china);
                                      $("#trackcode").text(track_code);
                                      $("#to_almaty").text(data[0].to_almaty);
                                      $("#to_client").text(data[0].to_client);
                                      $("#client_accept").text(data[0].client_accept);
-
-                                     if (data[1].is_post == true){
-                                         $("#post").css("display","block");
-                                     }else{
-                                         $("#post").css("display","none");
-                                     }
 
                                      if (data[1].block === 'нет'){
                                          $("#unknown").css("display","block");

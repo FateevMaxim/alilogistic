@@ -30,11 +30,6 @@ class ProfileController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $user = User::find($request->user()->id);
-        if(isset($request->all()["is_post"])){
-            $user->is_post = true;
-        }else{
-            $user->is_post = false;
-        }
         $user->save();
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
