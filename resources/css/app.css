@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.main {
-    min-height: 76vh;
-    background: #f9f8f8;
-}
 .circleBase {
     border-radius: 50%;
 }
