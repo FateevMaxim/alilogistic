@@ -54,7 +54,7 @@
                 <div class="pt-7"><h3 style="color:#13386c; font-size: 1.5em; font-weight: bold;">Регистрация</h3></div>
             @endif
 
-            <div class="w-full sm:max-w-md mt-2 px-6 py-4 bg-white overflow-hidden sm:rounded-lg">
+            <div class="w-full sm:max-w-md mt-2 px-6 py-4 overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>
