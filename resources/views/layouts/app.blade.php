@@ -51,7 +51,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="main">
                 {{ $slot }}
             </main>
         </div>
