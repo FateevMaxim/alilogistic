@@ -1,9 +1,9 @@
 {
-    "name": "EXS-Cargo",
-    "short_name": "EXS-Cargo",
+    "name": "Ali.Logistic",
+    "short_name": "Ali.Logistic",
     "start_url": "/index.php",
     "background_color": "#fff",
-    "description": "EXS-Cargo",
+    "description": "Ali.Logistic",
     "display" : "standalone",
     "orientation" : "portrait",
     "lang": "ru",
