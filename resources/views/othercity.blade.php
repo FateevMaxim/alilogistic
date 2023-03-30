@@ -78,8 +78,8 @@
                                 //usually scanners throw an 'Enter' key at the end of read
                                 if (e.keyCode === 13) {
                                         $('#track_codes_list').append('<h2>'+number+'. '+code+'</h2>');
-                                        $('#clear_track_codes').append(code+'\r\n');
-                                        $("#count").text(number);
+/*                                        $('#clear_track_codes').append(code+'\r\n');
+                                        $("#count").text(number);*/
                                         number++;
                                         code = "";
                                  } else {
