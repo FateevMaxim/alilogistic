@@ -71,34 +71,33 @@
                         </div>--}}
                         <script>
 
-
                             let code = "";
                             var number = 1;
+
                             document.addEventListener('keypress', e => {
-                                //usually scanners throw an 'Enter' key at the end of read
-                                if (e.keyCode === 13) {
-                                        $('#track_codes_list').append('<h2>'+number+'. '+code+'</h2>');
-                                        $('#clear_track_codes').append(code+'\r\n');
-                                        $("#count").text(number);
-                                        number++;
-                                        code = "";
-                                 } else {
-                                    code += e.key; //while this is not an 'enter' it stores the every key
+                                if (e.key === "Enter") {
+                                    $('#track_codes_list').append('<h2>'+number+'. '+code+'</h2>');
+                                    $('#clear_track_codes').append(code+'\r\n');
+                                    $("#count").text(number);
+                                    number++;
+                                    code = "";
+                                } else {
+                                    if(e.code[0] === "D"){
+                                        code += e.code[5]
+                                        return
+                                    }
+                                    code += e.code[3];
                                 }
                             });
 
-                            /!* прикрепить событие submit к форме *!/
-                            $("#searchForm").submit(function(event) {
-                                /!* отключение стандартной отправки формы *!/
-                                event.preventDefault();
 
-                                /!* собираем данные с элементов страницы: *!/
+                            $("#searchForm").submit(function(event) {
+                                event.preventDefault();
                                 var $form = $( this ),
                                     track_codes = $("#clear_track_codes").html();
                                     city = $("#city").val();
                                     url = $form.attr( 'action' );
 
-                                /!* отправляем данные методом POST *!/
                                 $.post( url, { track_codes: track_codes, city: city, send: true } )
                                  .done(function( data ) {
                                      location.reload();
@@ -106,9 +105,8 @@
 
                             });
 
-                            /!* прикрепить событие submit к форме *!/
+
                             $("#clear").click(function(event) {
-                                /!* отключение стандартной отправки формы *!/
                                 event.preventDefault();
 
                                      $("#track_codes_list").html('');
