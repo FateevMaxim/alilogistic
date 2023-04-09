@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,7 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/accept-product', [ProductController::class, 'acceptProduct'])->name('accept-product');
     Route::post('/client-product-archive', [ProductController::class, 'archiveProduct'])->name('client-product-archive');
     Route::post('/client-product-unarchive', [ProductController::class, 'unArchiveProduct'])->name('client-product-unarchive');
+    Route::post('/delete-track', [ProductController::class, 'deleteTrack'])->name('delete-track');
     Route::post('/client-delete', [ProfileController::class, 'deleteClient'])->name('client-delete');
+    Route::post('/client-edit', [ProfileController::class, 'editClient'])->name('client-edit');
     Route::post('/client-access', [ProfileController::class, 'accessClient'])->name('client-access');
     Route::post('/client-block', [ProfileController::class, 'blockClient'])->name('client-block');
     Route::post('/client-search', [ProfileController::class, 'searchClient'])->name('client-search');
@@ -52,7 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/message-delete', [ProfileController::class, 'deleteMessage'])->name('message-delete');
     Route::post('/message-add', [ProfileController::class, 'addMessage'])->name('message-add');
 
-
+    Route::get('/track_report_page', [ReportController::class, 'getTrackReportPage'])->name('track_report_page');
+    Route::post('/track_report', [ReportController::class, 'getTrackReport'])->name('track_report');
 
     Route::get('/result', [ProductController::class, 'result'])->name('result');
 
