@@ -197,7 +197,7 @@
                                                 <span>{{$track->client_accept}}</span></p>
                                         </div>
 
-                                        @if($track->to_client && $track->client_accept == null && $track->city == null)
+                                        @if($track->to_client && $track->client_accept == null && $track->city == null )
                                                 <div class="mt-4">
                                                     <form method="POST" action="{{ route('accept-product', ['track_code' => $track->track_code]) }}">
                                                         <x-classic-button class="w-9/12 mx-auto w-full justify-center inline-flex">
@@ -205,7 +205,7 @@
                                                         </x-classic-button>
                                                     </form>
                                                 </div>
-                                            @elseif($track->city && $track->to_client_city)
+                                            @elseif($track->city && $track->to_client_city && $track->client_accept == null)
                                             <div class="mt-4">
                                                 <form method="POST" action="{{ route('accept-product', ['track_code' => $track->track_code]) }}">
                                                     <x-classic-button class="w-9/12 mx-auto w-full justify-center inline-flex">
