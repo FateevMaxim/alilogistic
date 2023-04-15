@@ -41,6 +41,7 @@
                                     <p><b>Имя:</b> <span id="surnamename"></span> &nbsp; <span id="name"></span></p>
                                     <p><b>Номер телефона:</b> <span id="login"></span></p>
                                     <p><b>Город:</b> <span id="city"></span></p>
+                                    <span id="to_city" style="display: none;"></span>
 
                                     <p><b>Трек код:</b> <span id="trackcode"></span></p>
 
@@ -93,6 +94,7 @@
                                      $("#to_china").text(data[0].to_china);
                                      $("#trackcode").text(track_code);
                                      $("#to_almaty").text(data[0].to_almaty);
+                                     $("#to_city").text(data[0].city);
                                      $("#to_client").text(data[0].to_client);
                                      $("#client_accept").text(data[0].client_accept);
 
@@ -116,10 +118,11 @@
                                 /* собираем данные с элементов страницы: */
                                 var $form = $( this ),
                                     track_codes = $("#trackcode").text();
+                                    to_city = $("#to_city").text();
                                     url = $form.attr( 'action' );
 
                                 /* отправляем данные методом POST */
-                                $.post( url, { track_codes: track_codes } )
+                                $.post( url, { track_codes: track_codes, to_city: to_city } )
                                  .done(function( data ) {
                                      location.reload();
                                  });
