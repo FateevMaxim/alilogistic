@@ -101,7 +101,6 @@ class ProductController extends Controller
 
     public function almatyOut(Request $request)
     {
-        $city_field = 'city';
         if($request["city"] != 'Выберите город' && isset($request["city"])){
             $city = $request["city"];
         }else{
@@ -113,10 +112,8 @@ class ProductController extends Controller
         }
         $array =  preg_split("/\s+/", $request["track_codes"]);
         $client_field = 'to_client';
-        if (Auth::user()->type != 'almatyout'){
+        if (Auth::user()->type != 'othercity' && Auth::user()->type != 'almatyout'){
             $client_field = 'to_client_city';
-            $city_field = 'reg_city';
-            $city = 1;
         }
         $wordsFromFile = [];
         foreach ($array as $ar){
@@ -125,11 +122,11 @@ class ProductController extends Controller
                 $client_field => date(now()),
                 'status' => $status,
                 'reg_client' => 1,
-                $city_field => $city,
+                'city' => $city,
                 'updated_at' => date(now()),
             ];
         }
-        TrackList::upsert($wordsFromFile, ['track_code', $client_field, 'status', $city_field, 'reg_client', 'updated_at']);
+        TrackList::upsert($wordsFromFile, ['track_code', $client_field, 'status', 'city', 'reg_client', 'updated_at']);
         return response('success');
 
     }
