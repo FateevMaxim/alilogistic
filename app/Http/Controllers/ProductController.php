@@ -41,34 +41,41 @@ class ProductController extends Controller
 
         $array =  preg_split("/\s+/", $request["track_codes"]);
         $wordsFromFile = [];
-
+        $city = null;
         if (Auth::user()->type === 'aktobein'){
             $city_field = 'to_city';
             $city_value = 'Получено на складе в Актобе';
+            $city = 'Актобе';
             $reg_field = 'reg_city';
         }elseif (Auth::user()->type === 'almatyin'){
             $city_field = 'to_almaty';
             $city_value = 'Получено на складе в Алматы';
+            $city = 'Алматы';
             $reg_field = 'reg_almaty';
         }elseif (Auth::user()->type === 'zheskazganin'){
             $city_field = 'to_city';
             $city_value = 'Получено на складе в Жезказгане';
+            $city = 'Жезказган';
             $reg_field = 'reg_city';
         }elseif (Auth::user()->type === 'shimkentin'){
             $city_field = 'to_city';
             $city_value = 'Получено на складе в Шымкенте';
+            $city = 'Шымкент';
             $reg_field = 'reg_city';
         }elseif (Auth::user()->type === 'astanain'){
             $city_field = 'to_city';
             $city_value = 'Получено на складе в Астане';
+            $city = 'Астана';
             $reg_field = 'reg_city';
         }elseif (Auth::user()->type === 'kokshetauin'){
             $city_field = 'to_city';
             $city_value = 'Получено на складе в Кокшетау';
+            $city = 'Кокшетау';
             $reg_field = 'reg_city';
         }else{
             $city_field = 'to_city';
             $city_value = 'Получено на складе в Талдыкоргане';
+            $city = 'Талдыкорган';
             $reg_field = 'reg_city';
         }
 
@@ -78,6 +85,7 @@ class ProductController extends Controller
                 $city_field => date(now()),
                 'status' => $city_value,
                 $reg_field => 1,
+                'city' => $city,
                 'updated_at' => date(now()),
             ];
         }
