@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function index ()
     {
         $user = Auth::user();
-        $config = Configuration::query()->select('address', 'title_text', 'address_two')->first();
+        $config = Configuration::query()->select('address', 'title_text', 'address_two', 'whats_app')->first();
         $count = 0;
         $messages = Message::all();
         $cities = City::query()->select('title')->get();
@@ -103,7 +103,7 @@ class DashboardController extends Controller
                 ->where('client_track_lists.user_id', Auth::user()->id)
                 ->where('client_track_lists.status', '=', 'archive')
                 ->get();
-        $config = Configuration::query()->select('address', 'title_text', 'address_two')->first();
+        $config = Configuration::query()->select('address', 'title_text', 'address_two', 'whats_app')->first();
             $count = count($tracks);
             return view('dashboard')->with(compact('tracks', 'count', 'config'));
     }
