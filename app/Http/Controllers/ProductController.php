@@ -72,6 +72,16 @@ class ProductController extends Controller
             $city_value = 'Получено на складе в Кокшетау';
             $city = 'Кокшетау';
             $reg_field = 'reg_city';
+        }elseif (Auth::user()->type === 'uralskin'){
+            $city_field = 'to_city';
+            $city_value = 'Получено на складе в Уральске';
+            $city = 'Уральск';
+            $reg_field = 'reg_city';
+        }elseif (Auth::user()->type === 'petropavlovskin'){
+            $city_field = 'to_city';
+            $city_value = 'Получено на складе в Петропавловске';
+            $city = 'Петропавловск';
+            $reg_field = 'reg_city';
         }else{
             $city_field = 'to_city';
             $city_value = 'Получено на складе в Талдыкоргане';
@@ -146,7 +156,8 @@ class ProductController extends Controller
     {
 
         $track_code = ClientTrackList::query()->select('user_id')->where('track_code', $request['track_code'])->first();
-        $track_code_statuses =  TrackList::query()->select('to_china', 'to_almaty', 'city', 'to_client', 'client_accept')->where('track_code', $request['track_code'])->first();
+        $track_code_statuses =  TrackList::query()->select('to_china', 'to_almaty', 'city', 'to_client', 'client_accept', 'to_city', 'to_client_city',)
+            ->where('track_code', $request['track_code'])->first();
         if ($track_code){
             $user_data = User::query()->select('name', 'surname', 'login', 'city', 'block')->where('id', $track_code->user_id)->first();
         }else{
