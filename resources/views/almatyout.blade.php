@@ -41,7 +41,6 @@
                                     <p><b>Имя:</b> <span id="surnamename"></span> &nbsp; <span id="name"></span></p>
                                     <p><b>Номер телефона:</b> <span id="login"></span></p>
                                     <p><b>Город:</b> <span id="city"></span></p>
-                                    <span id="to_city" style="display: none;"></span>
 
                                     <p><b>Трек код:</b> <span id="trackcode"></span></p>
 
@@ -49,8 +48,18 @@
                                     <p><small id="to_china"></small></p>
                                     <h4>Дата регистрации в Алматы</h4>
                                     <p><small id="to_almaty"></small></p>
+                                    <div id="filial_one">
+                                        <h4>Отправлено в город <span id="city_name"></span></h4>
+                                        <p><small id="to_othercity"></small></p>
+                                    </div>
+                                    <div id="filial_two">
+                                        <h4>Получено в городе <span id="city_name_two"></span></h4>
+                                        <p><small id="to_city"></small></p>
+                                    </div>
+
                                     <h4>Дата выдачи клиенту</h4>
                                     <p><small id="to_client"></small></p>
+                                    <p><small id="to_client_city"></small></p>
                                     <h4>Дата получения клиентом</h4>
                                     <p><small id="client_accept"></small></p>
                                 </div>
@@ -92,8 +101,23 @@
                                      $("#to_china").text(data[0].to_china);
                                      $("#trackcode").text(track_code);
                                      $("#to_almaty").text(data[0].to_almaty);
-                                     $("#to_city").text(data[0].city);
-                                     $("#to_client").text(data[0].to_client);
+                                     $("#to_city").text(data[0].to_city);
+                                     $("#to_client_city").text(data[0].to_client_city);
+                                     $("#city_name").text(data[0].city);
+                                     $("#city_name_two").text(data[0].city);
+
+                                     var city_name = data[0].city;
+
+                                     if(city_name){
+                                         $("#to_othercity").text(data[0].to_client);
+                                         //$("#to_client").text(data[0].to_client);
+                                     }else{
+
+                                         $("#filial_one").css("display", "none");
+                                         $("#filial_two").css("display", "none");
+                                         $("#to_client").text(data[0].to_client);
+                                     }
+
                                      $("#client_accept").text(data[0].client_accept);
 
                                      if (data[1].block === 'нет'){
@@ -116,7 +140,7 @@
                                 /* собираем данные с элементов страницы: */
                                 var $form = $( this ),
                                     track_codes = $("#trackcode").text();
-                                    to_city = $("#to_city").text();
+                                    to_city = $("#city_name").text();
                                     url = $form.attr( 'action' );
 
                                 /* отправляем данные методом POST */

@@ -38,7 +38,7 @@
 
 }
 .min_height {
-    min-height: 500px;
+    min-height: 530px;
 }
 
 @media (max-width: 575.98px) {
@@ -55,4 +55,8 @@
 }
 .bg-white {
     background: #fcfcfc;
+}
+
+.qr_center img {
+    margin: 0 auto;
 }

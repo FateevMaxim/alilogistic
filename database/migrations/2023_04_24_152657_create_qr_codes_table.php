@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('qr_codes', function (Blueprint $table) {
             $table->id();
+            $table->string('city')->nullable();
             $table->string('upload_data')->nullable();
             $table->string('clear_data')->nullable();
             $table->string('inventory_mode')->nullable();
