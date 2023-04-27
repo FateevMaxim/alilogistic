@@ -44,7 +44,6 @@
                             </div>
                         </div>
                     </div>
-                    @include('components.scanner-settings')
             </div>
         </div>
 </x-app-layout>
