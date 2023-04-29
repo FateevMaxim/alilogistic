@@ -50,7 +50,6 @@ class ProductController extends Controller
         }elseif (Auth::user()->type === 'almatyin'){
             $city_field = 'to_almaty';
             $city_value = 'Получено на складе в Алматы';
-            $city = 'Алматы';
             $reg_field = 'reg_almaty';
         }elseif (Auth::user()->type === 'zheskazganin'){
             $city_field = 'to_city';
