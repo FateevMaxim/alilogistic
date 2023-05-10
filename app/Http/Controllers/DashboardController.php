@@ -23,6 +23,7 @@ class DashboardController extends Controller
         $qrPetropavlovsk = QrCodes::query()->select()->where('id', 3)->first();
         $qrAtyrau = QrCodes::query()->select()->where('id', 4)->first();
         $qrSemey = QrCodes::query()->select()->where('id', 5)->first();
+        $qrTaraz = QrCodes::query()->select()->where('id', 6)->first();
         $count = 0;
         $messages = Message::all();
         $cities = City::query()->select('title')->get();
@@ -78,6 +79,9 @@ class DashboardController extends Controller
             }elseif ($user->type === 'semeyin') {
                 $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Семее')->count();
                 return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Семее', 'qr' => $qrSemey]);
+            }elseif ($user->type === 'tarazin') {
+                $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Таразе')->count();
+                return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Таразе', 'qr' => $qrTaraz]);
             } elseif ($user->type === 'almatyout') {
                 $count = TrackList::query()->whereDate('to_client_city', Carbon::today())->count();
                 return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Алматы', 'qr' => $qr]);
@@ -111,6 +115,9 @@ class DashboardController extends Controller
             } elseif ($user->type === 'semeyout') {
                 $count = TrackList::query()->whereDate('to_client_city', Carbon::today())->count();
                 return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Семее', 'qr' => $qrSemey]);
+            } elseif ($user->type === 'tarazout') {
+                $count = TrackList::query()->whereDate('to_client_city', Carbon::today())->count();
+                return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Таразе', 'qr' => $qrTaraz]);
             } elseif ($user->type === 'othercity') {
                 $count = TrackList::query()->whereDate('to_client', Carbon::today())->count();
                 return view('othercity')->with(compact('count', 'config', 'cities', 'qr'));
