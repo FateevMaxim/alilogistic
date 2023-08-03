@@ -95,7 +95,7 @@ class DashboardController extends Controller
             }elseif ($user->type === 'karagandain') {
                 $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Караганде')->count();
                 return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Караганде', 'qr' => $qrKaraganda]);
-            }elseif ($user->type === 'almatyin') {
+            }elseif ($user->type === 'almatyfin') {
                 $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Алматы')->count();
                 return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Алматы', 'qr' => $qrAlmaty]);
             } elseif ($user->type === 'almatyout') {
@@ -145,7 +145,7 @@ class DashboardController extends Controller
                 return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Караганде', 'qr' => $qrKaraganda]);
             }elseif ($user->type === 'almatyout') {
                 $count = TrackList::query()->whereDate('to_client_city', Carbon::today())->count();
-                return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Алматы', 'qr' => $qrAlmaty]);
+                return view('almatyfout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Алматы', 'qr' => $qrAlmaty]);
             } elseif ($user->type === 'othercity') {
                 $count = TrackList::query()->whereDate('to_client', Carbon::today())->count();
                 return view('othercity')->with(compact('count', 'config', 'cities', 'qr'));
