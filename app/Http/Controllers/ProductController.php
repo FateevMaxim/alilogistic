@@ -131,6 +131,11 @@ class ProductController extends Controller
             $city_value = 'Получено на складе в Павлодаре';
             $city = 'Павлодар';
             $reg_field = 'reg_city';
+        } elseif (Auth::user()->type === 'ridderin'){
+            $city_field = 'to_city';
+            $city_value = 'Получено на складе в Риддере';
+            $city = 'Риддер';
+            $reg_field = 'reg_city';
         }else{
             $city_field = 'to_city';
             $city_value = 'Получено на складе в Талдыкоргане';
