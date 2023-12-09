@@ -113,7 +113,7 @@ class DashboardController extends Controller
                 return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Алматы', 'qr' => $qrAlmaty]);
             }elseif ($user->type === 'ridderin') {
                 $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Риддере')->count();
-                return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Реддере', 'qr' => $qrRidder]);
+                return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Риддере', 'qr' => $qrRidder]);
             } elseif ($user->type === 'almatyout') {
                 $count = TrackList::query()->whereDate('to_client_city', Carbon::today())->count();
                 return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Алматы', 'qr' => $qr]);
