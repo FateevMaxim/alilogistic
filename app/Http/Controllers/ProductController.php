@@ -259,14 +259,14 @@ class ProductController extends Controller
         $validated = $request->validate([
             'delete_track' => 'required|string|max:100',
         ]);
-
         if ($validated){
-            $archive = ClientTrackList::query()->select('id')->where('track_code', $request['delete_track'])->first();
-            $client_track_lists = ClientTrackList::find($archive->id);
-            $client_track_lists->status = 'deleted';
-            $client_track_lists->save();
+            ClientTrackList::where('id', $request['delete_track'])
+                ->update(
+                    ['status' => 'deleted']
+                );
             return redirect()->back()->with('message', 'Трек код успешно удалён');
         }
+        return redirect()->back()->with('error', 'Валидация не трека не пройдена');
 
     }
 

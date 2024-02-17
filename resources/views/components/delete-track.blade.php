@@ -25,7 +25,7 @@
             </div>
             <form method="POST" action="{{ route('delete-track') }}">
                 @csrf
-                <x-text-input type="hidden" name="delete_track" value="{{$track->track_code}}" />
+                <x-text-input type="hidden" name="delete_track" value="{{$track->id}}" />
 
             <!-- Modal footer -->
             <div class="grid grid-cols-2 items-center p-6 space-x-2 border-t border-gray-200 rounded-b">
