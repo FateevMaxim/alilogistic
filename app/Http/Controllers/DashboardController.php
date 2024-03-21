@@ -101,8 +101,8 @@ class DashboardController extends Controller
                 $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Караганде')->count();
                 return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Караганде', 'qr' => $qrKaraganda]);
             }elseif ($user->type === 'turkestanin') {
-                $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Туркестане')->count();
-                return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Туркестане', 'qr' => $qrTurkestan]);
+                $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Балхаше')->count();
+                return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Балхаше', 'qr' => $qrTurkestan]);
             }elseif ($user->type === 'oskemenin') {
                 $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Өскемене')->count();
                 return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Өскемене', 'qr' => $qrOskemen]);
@@ -165,7 +165,7 @@ class DashboardController extends Controller
                 return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Караганде', 'qr' => $qrKaraganda]);
             } elseif ($user->type === 'turkestanout') {
                 $count = TrackList::query()->whereDate('to_client_city', Carbon::today())->count();
-                return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Туркестане', 'qr' => $qrTurkestan]);
+                return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Балхаше', 'qr' => $qrTurkestan]);
             } elseif ($user->type === 'oskemenout') {
                 $count = TrackList::query()->whereDate('to_client_city', Carbon::today())->count();
                 return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Өскемене', 'qr' => $qrOskemen]);
