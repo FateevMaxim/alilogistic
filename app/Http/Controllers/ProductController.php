@@ -270,6 +270,17 @@ class ProductController extends Controller
 
     }
 
+    public function editTrack(Request $request)
+    {
+        $fields = $request->all();
+        ClientTrackList::find($fields['track_id'])->update([
+            'detail' => $fields['edit_detail'],
+            'track_code' => $fields['edit_track_code']
+        ]);
+        return redirect()->back()->with('message', 'Трек код успешно изменён');
+
+    }
+
     public function archiveProduct (Request $request)
     {
         $validated = $request->validate([

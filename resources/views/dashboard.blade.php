@@ -120,6 +120,9 @@
                                     @if(Route::currentRouteName() != 'archive')
                                     <div class="flex flex-row-reverse col-span-1">
                                         <li class="mr-4">
+                                            @include('components.edit-track')
+                                        </li>
+                                        <li class="mr-4">
                                             @include('components.delete-track')
                                         </li>
                                         <li class="mr-4">
