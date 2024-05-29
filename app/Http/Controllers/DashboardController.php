@@ -31,9 +31,9 @@ class DashboardController extends Controller
         $qrOskemen = QrCodes::query()->select()->where('id', 12)->first();
         $qrPavlodar = QrCodes::query()->select()->where('id', 13)->first();
         $qrAlmaty = QrCodes::query()->select()->where('id', 10)->first();
-        $qrRidder = QrCodes::query()->select()->where('id', 11)->first();
+        $qrRidder = QrCodes::query()->select()->where('id', 14)->first();
         $qrAktau = QrCodes::query()->select()->where('id', 12)->first();
-        $qrEkibastuz = QrCodes::query()->select()->where('id', 13)->first();
+        $qrEkibastuz = QrCodes::query()->select()->where('id', 15)->first();
         $count = 0;
         $messages = Message::all();
         $cities = City::query()->select('title')->get();
