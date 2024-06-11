@@ -68,7 +68,7 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
-        <div class="mt-4">
+        {{--<div class="mt-4">
             <input type="checkbox" name="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" required />
             <label for="checkbox" class="ml-2 text-sm text-gray-900">Принимаю условия <a data-modal-target="staticModal" data-modal-toggle="staticModal" class="font-medium cursor-pointer">Соглашения при регистрации</a></label>
 
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--}}
 
 
         <div class="flex items-center justify-end mt-4">

@@ -42,9 +42,9 @@
     <body class="font-sans mt-6 text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" id="main_block">
             <div>
-                <a href="/">
+               {{-- <a href="/">
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
+                </a>--}}
             </div>
             @if(\Illuminate\Support\Facades\Route::is('login') || \Illuminate\Support\Facades\Route::is('stock') || \Illuminate\Support\Facades\Route::is('admin'))
                 <div class="pt-7"><h3 style="color:#13386c; font-size: 1.5em; font-weight: bold;">Вход в систему</h3></div>
@@ -64,6 +64,7 @@
             $('.phone').inputmask('+79999999999');
         });
     </script>
+    <script src="{{ asset('/js/flowbite.js') }}"></script>
     <script src=”{{ asset('/sw.js') }}”>
 
     </script>

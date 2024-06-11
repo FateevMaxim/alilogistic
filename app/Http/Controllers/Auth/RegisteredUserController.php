@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'checkbox' => ['required'],
+            //'checkbox' => ['required'],
             'surname' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'login' => ['required', 'string', 'max:16', 'unique:'.User::class],

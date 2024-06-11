@@ -46,9 +46,18 @@
             </div>
             @if(isset($config->whats_app))
             <div class="flex items-center justify-end mt-4">
-                <a href="https://api.whatsapp.com/send?phone={{$config->whats_app}}&text=Здравствуйте! Напомните, пожалуйста, мой пароль" class="w-9/12 mx-auto">
+                {{--<a href="https://api.whatsapp.com/send?phone={{$config->whats_app}}&text=Здравствуйте! Напомните, пожалуйста, мой пароль" class="w-9/12 mx-auto">
                     Забыли пароль?
-                </a>
+                </a>--}}
+
+
+                <a data-tooltip-target="tooltip-click" data-tooltip-trigger="click" class="mx-auto">Забыли пароль?</a>
+
+                <div  id="tooltip-click" role="tooltip" class="z-10 invisible px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
+                    Обратитесь к вашему карго
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+
             </div>
             @endif
 

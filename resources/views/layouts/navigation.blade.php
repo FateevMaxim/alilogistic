@@ -7,10 +7,10 @@
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <!-- Logo -->
-                    <div class="shrink-0 flex items-center">
+                    <div class="shrink-0 flex items-center">{{--
                         <a href="{{ route('dashboard') }}">
                             <x-navigation-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                        </a>
+                        </a>--}}
                     </div>
 
                     <!-- Navigation Links -->
@@ -60,26 +60,26 @@
                         <img src="{{asset('images/chinanew.jpg')}}" alt="China">
                     </div>  --}}
 
-                    <hr class="h-px mt-4 bg-gray-200 border-0">
+                   {{-- <hr class="h-px mt-4 bg-gray-200 border-0">--}}
                     @if(\Illuminate\Support\Facades\Auth::user()->type === 'othercity')
                         <a href="{{ route('track_report_page') }}"  class="grid grid-col-1 px-4 mt-6 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">Отчёт по трек кодам</a>
                     @endif
-                    <hr class="h-px mt-4 bg-gray-200 border-0">
+                    {{-- <hr class="h-px mt-4 bg-gray-200 border-0">
 
-                    <div class="p-2 mt-4 mb-4">
-                        <div class="grid grid-cols-1 gap-4">
-                            <a href="https://t.me/+4kvjewf4_YEwOWVi" target="_blank" class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">{{ __('Telegram') }}</a>
-                        </div>
-                    </div>
-                    <div class="p-2 mt-4 mb-4">
-                        <div class="grid grid-cols-1 gap-4">
-                            <a href="dogovoroferti.pdf" download target="_blank" class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">{{ __('Скачать договор оферты') }}</a>
-                        </div>
-                    </div>
+                  -- <div class="p-2 mt-4 mb-4">
+                         <div class="grid grid-cols-1 gap-4">
+                             <a href="https://t.me/+4kvjewf4_YEwOWVi" target="_blank" class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">{{ __('Telegram') }}</a>
+                         </div>
+                     </div>
+                     <div class="p-2 mt-4 mb-4">
+                         <div class="grid grid-cols-1 gap-4">
+                             <a href="dogovoroferti.pdf" download target="_blank" class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">{{ __('Скачать договор оферты') }}</a>
+                         </div>
+                     </div>
 
 
-                    <hr class="h-px my-8 bg-gray-200 border-0">
-                    <div class="grid grid-cols-2 mt-4 gap-4">
+                    <hr class="h-px my-8 bg-gray-200 border-0">--}}
+                    <div class="grid grid-cols-2 mt-6 gap-4">
                         <a href="{{ route('profile.edit') }}" class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">{{ __('Профиль') }}</a>
                         <form method="POST" action="{{ route('logout') }}" class="flex inline-flex"><a onclick="event.preventDefault();
                           this.closest('form').submit();" class="w-full justify-center inline-flex cursor-pointer px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">{{ __('Выйти') }}</a></form>
