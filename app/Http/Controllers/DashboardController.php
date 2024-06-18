@@ -193,12 +193,25 @@ class DashboardController extends Controller
                 return view('othercity')->with(compact('count', 'config', 'cities', 'qr'));
             } elseif ($user->type === 'admin' || $user->type === 'moderator') {
                 $search_phrase = '';
-                $users = User::query()->select('id', 'name', 'surname', 'type', 'login', 'city', 'is_active', 'block', 'password', 'created_at')->where('type', null)->where('is_active', false)->get();
+                if ($user->city){
+                    $users = User::query()->select('id', 'name', 'surname', 'type', 'login', 'city', 'is_active', 'block', 'password', 'created_at')->where('type', null)->where('city', $user->city)->where('is_active', false)->get();
+                }else{
+                    $users = User::query()->select('id', 'name', 'surname', 'type', 'login', 'city', 'is_active', 'block', 'password', 'created_at')->where('type', null)->where('city', 'Алматы')->where('is_active', false)->get();
+                }
+
                 return view('admin')->with(compact('users', 'messages', 'search_phrase', 'config'));
             }
         }
 
-        return view('register-me')->with(compact('config'));
+        $moderatorPhone = User::query()->select('login')->where('type', 'moderator')->where('city', $user->city)->first();
+
+        if ($moderatorPhone){
+            $phone = $moderatorPhone->login;
+        }else{
+            $phone = $config->whats_app;
+        }
+
+        return view('register-me')->with(compact('phone'));
     }
 
 

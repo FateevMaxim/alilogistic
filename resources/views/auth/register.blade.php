@@ -35,9 +35,15 @@
 
         <!-- City -->
         <div class="mt-4">
-            <x-input-label for="city" :value="__('Город (на английском)')" />
-            <x-text-input id="city" class="block mt-1 w-full border-2" type="text" name="city" :value="old('city')" placeholder="Gorod" required autocomplete="city" />
-            <x-input-error :messages="$errors->get('city')" class="mt-2" />
+            <x-input-label for="city" :value="__('Город')" />
+            <select id="city" name="city" class="block mt-1 w-full border-2 border-gray-300 rounded-md" required>
+                @foreach($cities as $city)
+                    <option value="{{ $city->title }}" {{ old('city') == $city->title ? 'selected' : '' }}>
+                        {{ $city->title }}
+                    </option>
+                @endforeach
+
+            </select>
         </div>
        {{-- @if(isset($config->whats_app))
             <div class="flex items-center justify-end mt-4">

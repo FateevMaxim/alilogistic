@@ -6,7 +6,7 @@
         @csrf
         <!-- Email Address -->
         <div>
-            <x-text-input id="login" class="block phone mt-1 w-9/12 mx-auto border-2 border-sky-400" type="text" placeholder="+7 701 775 7272" name="login" :value="old('login')" required autofocus autocomplete="login" />
+            <x-text-input id="login" class="block phone mt-1 w-9/12 mx-auto border-2 border-sky-400" type="text" placeholder="+7 701 775 7272" name="login" id="login" :value="old('login')" required autofocus autocomplete="login" />
             <x-input-error :messages="$errors->get('login')" class="mt-2" />
         </div>
 
@@ -17,7 +17,7 @@
                             type="password"
                             name="password"
                             placeholder="Пароль"
-                            required autocomplete="current-password" />
+                          required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -25,7 +25,7 @@
         <!-- Remember Me -->
         <div class="block mt-4 w-9/12 mx-auto">
             <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Запомнить') }}</span>
             </label>
         </div>
@@ -46,17 +46,20 @@
             </div>
             @if(isset($config->whats_app))
             <div class="flex items-center justify-end mt-4">
-                {{--<a href="https://api.whatsapp.com/send?phone={{$config->whats_app}}&text=Здравствуйте! Напомните, пожалуйста, мой пароль" class="w-9/12 mx-auto">
+               <a class="w-9/12 mx-auto" id="forgetPassword" style="cursor:pointer;">
+                       Забыли пароль?
+                </a>
+{{--                <a href="https://api.whatsapp.com/send?phone={{$config->whats_app}}&text=Здравствуйте! Напомните, пожалуйста, мой пароль" class="w-9/12 mx-auto">
                     Забыли пароль?
                 </a>--}}
 
 
-                <a data-tooltip-target="tooltip-click" data-tooltip-trigger="click" class="mx-auto">Забыли пароль?</a>
+                {{-- <a data-tooltip-target="tooltip-click" data-tooltip-trigger="click" class="mx-auto">Забыли пароль?</a>
 
                 <div  id="tooltip-click" role="tooltip" class="z-10 invisible px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
                     Обратитесь к вашему карго
                     <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
+                </div>--}}
 
             </div>
             @endif
@@ -98,6 +101,38 @@
                     });
                 }
             }
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#forgetPassword').click(function() {
+                    var login = $('#login').val();
+
+                    if (!login) {
+                        alert('Введите номер телефона');
+                        return;
+                    }
+
+                    $.ajax({
+                        url: '/forget-password',
+                        method: 'POST',
+                        data: {
+                            login: login,
+                            _token: '{{ csrf_token() }}' // Laravel CSRF token
+                        },
+                        success: function(response) {
+                            // Assuming the response contains the redirect URL
+                            if (response.redirect_url) {
+                                window.location.href = response.redirect_url;
+                            } else {
+                                alert('Ошибка. '+response.message);
+                            }
+                        },
+                        error: function() {
+                            alert('An error occurred. Please try again.');
+                        }
+                    });
+                });
+            });
         </script>
     </form>
 </x-guest-layout>

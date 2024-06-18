@@ -34,6 +34,9 @@ Route::get('/register-me', function () {
     return view('register-me');
 })->middleware(['auth', 'verified'])->name('register-me');
 
+
+Route::post('/forget-password', [\App\Http\Controllers\Auth\PasswordController::class, 'forgetPassword']);
+
 Route::middleware('auth')->group(function () {
     Route::post('/file-import', [ProductController::class, 'fileImport'])->name('file-import');
     Route::get('/file-export', [ProductController::class, 'fileExport'])->name('file-export');
