@@ -203,10 +203,10 @@ class DashboardController extends Controller
             }
         }
 
-        $moderatorPhone = User::query()->select('login')->where('type', 'moderator')->where('city', $user->city)->first();
+        $moderatorPhone = User::query()->select('whatsapp')->where('type', 'moderator')->where('city', $user->city)->first();
 
         if ($moderatorPhone){
-            $phone = $moderatorPhone->login;
+            $phone = $moderatorPhone->whatsapp;
         }else{
             $phone = $config->whats_app;
         }

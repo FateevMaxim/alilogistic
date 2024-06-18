@@ -47,12 +47,12 @@ class PasswordController extends Controller
             if(!$user){
                 return response()->json(['message' => 'Такой пользователь не найден, проверьте введённый номер телефона']);
             }
-            $moderator = User::query()->select('login')->where('type', 'moderator')->where('city', $user->city)->first();
+            $moderator = User::query()->select('whatsapp')->where('type', 'moderator')->where('city', $user->city)->first();
 
             if (!$moderator){
                 $restoreNumber = (Configuration::query()->select('whats_app')->first())->whats_app;
             }else{
-                $restoreNumber = $moderator->login;
+                $restoreNumber = $moderator->whatsapp;
             }
 
             $externalUrl = "https://api.whatsapp.com/send?phone={{$restoreNumber}}&text=Здравствуйте! Напомните, пожалуйста, мой пароль";
