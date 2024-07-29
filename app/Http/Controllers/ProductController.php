@@ -51,10 +51,10 @@ class ProductController extends Controller
             $city_field = 'to_almaty';
             $city_value = 'Получено на складе в Алматы';
             $reg_field = 'reg_almaty';
-        }elseif (Auth::user()->type === 'zheskazganin'){
+        }elseif (Auth::user()->type === 'aksuin'){
             $city_field = 'to_city';
-            $city_value = 'Получено на складе в Жезказгане';
-            $city = 'Жезказган';
+            $city_value = 'Получено на складе в Аксу';
+            $city = 'Аксу';
             $reg_field = 'reg_city';
         }elseif (Auth::user()->type === 'shimkentin'){
             $city_field = 'to_city';
@@ -324,7 +324,7 @@ class ProductController extends Controller
 
     public function fileExport(Request $request)
     {
-        return Excel::download(new UsersExport($request['date'], $request['city']), 'users.xlsx');;
+        return Excel::download(new UsersExport($request['date'], $request['city']), 'users.xlsx');
     }
     public function result ()
     {
