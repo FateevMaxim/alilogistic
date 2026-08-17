@@ -34,6 +34,14 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script>
+            // CSRF-токен для всех jQuery-запросов на странице
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        </script>
         <!-- Scripts -->
         @vite(['resources/js/app.js','resources/css/app.css'])
     </head>

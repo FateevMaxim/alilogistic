@@ -81,7 +81,7 @@
                     <hr class="h-px my-8 bg-gray-200 border-0">--}}
                     <div class="grid grid-cols-2 mt-6 gap-4">
                         <a href="{{ route('profile.edit') }}" class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">{{ __('Профиль') }}</a>
-                        <form method="POST" action="{{ route('logout') }}" class="flex inline-flex"><a onclick="event.preventDefault();
+                        <form method="POST" action="{{ route('logout') }}" class="flex inline-flex">@csrf<a onclick="event.preventDefault();
                           this.closest('form').submit();" class="w-full justify-center inline-flex cursor-pointer px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">{{ __('Выйти') }}</a></form>
                     </div>
                 </div>

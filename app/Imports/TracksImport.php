@@ -31,6 +31,12 @@ class TracksImport implements ToModel, SkipsOnError
     */
     public function model(array $row)
     {
+        // Пустые строки в конце файла приходят как null — пропускаем их,
+        // иначе в базу попадают записи с пустым трек кодом.
+        if (! isset($row[0]) || trim((string) $row[0]) === '') {
+            return null;
+        }
+
         return new TrackList([
             'track_code' => $row[0],
             'to_china' => $this->date,
