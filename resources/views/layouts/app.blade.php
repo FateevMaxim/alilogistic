@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <!– PWA  –>
+        <!""� PWA  ""�>
 
         <meta name="theme-color" content="#6777ef"/>
 
@@ -28,14 +28,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Kodchasan:ital,wght@0,300;1,200;1,300&family=Montserrat:ital,wght@0,200;0,300;0,800;1,200;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Parisienne&family=Playball&family=Poppins:ital,wght@0,100;0,200;0,300;0,800;0,900;1,100;1,200;1,300&family=Roboto+Condensed:wght@300;400;700&family=Roboto+Mono:ital,wght@0,100;1,100&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Beastly&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="manifest" href="{{ asset('favicons/manifest.json') }}">
         <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="msapplication-TileImage" content="{{ asset('favicons/ms-icon-144x144.png') }}">
         <meta name="theme-color" content="#ffffff">
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script>
-            // CSRF-токен для всех jQuery-запросов на странице
+            // CSRF-токен для всех jQuery-зап�"осов на ст�"анице
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -64,7 +64,7 @@
             </main>
         </div>
         <script src="{{ asset('/js/flowbite.js') }}"></script>
-        <script src=”{{ asset('/sw.js') }}”>
+        <script src="""{{ asset('/sw.js') }}""">
 
         </script>
 
